@@ -16,4 +16,5 @@ dependencies {
     }
     compile("com.jagrosh:jda-utilities-command:3.0.5")
     compile("ch.qos.logback:logback-classic:1.2.3")
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
 }

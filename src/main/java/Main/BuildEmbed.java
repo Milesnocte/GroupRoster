@@ -2,23 +2,29 @@ package Main;
 import Credentials.Credentials;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
 
-public class BuildEmbed {
+import java.util.Arrays;
+import java.util.List;
+
+public class BuildEmbed extends ListenerAdapter {
 
     long id;
+    int numOfRoles;
     boolean runners;
-    public String roles[][];
-    EmbedBuilder embed;
+    String roles[][];
+    EmbedBuilder embed = new EmbedBuilder();
     String roleList, rosterEvent, time, timeZone, commander;
-
+    String[] args;
 
     public BuildEmbed(MessageReceivedEvent event, String[] args) {
-
+        this.args = args;
         rosterEvent = args[3];
         time = args[1];
         timeZone = args[2];
         commander = event.getMember().getAsMention();
-        embed = new EmbedBuilder();
         roleList = NumOfRoles(args);
 
         // ADD ALL THE FIELDS TO THE EMBED
@@ -43,7 +49,6 @@ public class BuildEmbed {
                     Sent.addReaction("\uD83D\uDEAB").queue();
                 }
         );
-        int memebers = event.getGuild().getMemberCount();
     }
 
     public String NumOfRoles(String[] args){
@@ -54,7 +59,7 @@ public class BuildEmbed {
         int numHealers = Integer.parseInt(args[5]);
         int numDps = Integer.parseInt(args[6]);
         int numRunners = Integer.parseInt(args[7]);
-        int numOfRoles = numTanks + numHealers + numDps + numRunners;
+        numOfRoles = numTanks + numHealers + numDps + numRunners;
         roles = new String[numOfRoles][2];
 
         // ADD A COLUMN TO THE ARRAY FOR EACH ROLE
@@ -77,13 +82,16 @@ public class BuildEmbed {
                 roles[k][1] = "Empty";
             }
         }
+        return toRoleList(roles, numOfRoles);
+    }
 
+    public String toRoleList(String[][] roles, int numOfRoles){
         // ORGANIZE ALL THE ROLES INTO A SINGLE STRING SO THAT THEY CAN BE ADDED TO THE EMBED
         for(int p = 0; p < numOfRoles; p++){
             roleList += roles[p][0] + " " + roles[p][1] + "\n";
         }
 
         return roleList;
-
     }
+
 }
