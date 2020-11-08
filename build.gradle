@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'org.MilesNocte'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile ("net.dv8tion:JDA:4.2.0_214") {
+        exclude module: 'opus-java'
+    }
+    compile("com.jagrosh:jda-utilities-command:3.0.5")
+    compile("ch.qos.logback:logback-classic:1.2.3")
+}
