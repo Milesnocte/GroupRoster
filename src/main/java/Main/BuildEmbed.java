@@ -1,6 +1,6 @@
 package Main;
+import Credentials.Credentials;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class BuildEmbed {

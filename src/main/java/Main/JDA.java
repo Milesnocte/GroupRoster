@@ -1,5 +1,6 @@
 package Main;
 
+import Credentials.Credentials;
 import Listeners.BotEvents;
 import Listeners.MessageListener;
 import Listeners.ReactionListener;
