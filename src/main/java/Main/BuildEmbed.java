@@ -7,20 +7,21 @@ public class BuildEmbed {
 
     long id;
     boolean runners;
-    String roles[][];
+    public String roles[][];
     EmbedBuilder embed;
     String roleList, rosterEvent, time, timeZone, commander;
 
+
     public BuildEmbed(MessageReceivedEvent event, String[] args) {
 
-        rosterEvent= args[3];
-        time= args[1];
+        rosterEvent = args[3];
+        time = args[1];
         timeZone = args[2];
         commander = event.getMember().getAsMention();
         embed = new EmbedBuilder();
-
         roleList = NumOfRoles(args);
 
+        // ADD ALL THE FIELDS TO THE EMBED
         embed.setDescription("React the role you want to join to join the roster\nReact :no_entry_sign: to remove your role");
         embed.setFooter("Group Roster created by MilesNocte", event.getJDA().getUserById(Credentials.OWNER_ID).getAvatarUrl());
         embed.addField("Commander", (":crown: " + commander), false);
@@ -42,20 +43,21 @@ public class BuildEmbed {
                     Sent.addReaction("\uD83D\uDEAB").queue();
                 }
         );
+        int memebers = event.getGuild().getMemberCount();
     }
 
     public String NumOfRoles(String[] args){
 
+        // GET THE ARGUMENTS FROM THE ROSTER COMMAND
         roleList = "";
-
         int numTanks = Integer.parseInt(args[4]);
         int numHealers = Integer.parseInt(args[5]);
         int numDps = Integer.parseInt(args[6]);
         int numRunners = Integer.parseInt(args[7]);
         int numOfRoles = numTanks + numHealers + numDps + numRunners;
-
         roles = new String[numOfRoles][2];
 
+        // ADD A COLUMN TO THE ARRAY FOR EACH ROLE
         for(int k = 0; k < numTanks; k++){
             roles[k][0] = "<:Tank:705672828468330516>";
             roles[k][1] = "Empty";
@@ -76,9 +78,12 @@ public class BuildEmbed {
             }
         }
 
+        // ORGANIZE ALL THE ROLES INTO A SINGLE STRING SO THAT THEY CAN BE ADDED TO THE EMBED
         for(int p = 0; p < numOfRoles; p++){
             roleList += roles[p][0] + " " + roles[p][1] + "\n";
         }
+
         return roleList;
+
     }
 }

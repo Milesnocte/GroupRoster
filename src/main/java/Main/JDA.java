@@ -1,7 +1,7 @@
 package Main;
 
 import Credentials.Credentials;
-import Listeners.BotEvents;
+import Listeners.BotEventsListener;
 import Listeners.MessageListener;
 import Listeners.ReactionListener;
 import net.dv8tion.jda.api.JDABuilder;
@@ -23,7 +23,7 @@ public class JDA extends ListenerAdapter {
         // Set event manager
         jda.addEventListeners(new MessageListener());
         jda.addEventListeners(new ReactionListener());
-        jda.addEventListeners(new BotEvents());
+        jda.addEventListeners(new BotEventsListener());
 
         // build the bot
         jda.build().awaitReady();

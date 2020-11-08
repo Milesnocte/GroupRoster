@@ -8,9 +8,9 @@ import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-public class BotEvents extends ListenerAdapter {
+public class BotEventsListener extends ListenerAdapter {
 
-    // Number of guilds the bot is in
+    // NUMBER OF GUILDS THE BOT IS IN
     public static int guildCount;
 
     @Override

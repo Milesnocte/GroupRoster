@@ -1,5 +1,5 @@
 package Commands;
-import Listeners.BotEvents;
+import Listeners.BotEventsListener;
 
 import Main.BuildEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -15,7 +15,7 @@ public class Commands {
                 embed = new BuildEmbed(event, args);
                 break;
             case "servers":
-                event.getChannel().sendMessage("Im currently watching `" + BotEvents.guildCount + "` servers for roster events").queue();
+                event.getChannel().sendMessage("Im currently watching `" + BotEventsListener.guildCount + "` servers for roster events").queue();
                 break;
         }
     }
