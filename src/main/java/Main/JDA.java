@@ -25,7 +25,7 @@ public class JDA extends ListenerAdapter {
         jda.addEventListeners(new ReactionListener());
         jda.addEventListeners(new BotEvents());
 
-        // Build the bot
+        // Await ready and build the bot
         jda.build().awaitReady();
 
         System.out.println("https://discord.com/api/oauth2/authorize?client_id=" + Credentials.BOT_ID + "&permissions=1544023120&scope=bot");
