@@ -22,7 +22,7 @@ public class BuildEmbed {
         roleList = NumOfRoles(args);
 
         embed.setDescription("React the role you want to join to join the roster\nReact :no_entry_sign: to remove your role");
-        embed.setFooter("Group Roster created by MilesNocte", event.getJDA().getUserById(Credentials.OWNER_TOKEN).getAvatarUrl());
+        embed.setFooter("Group Roster created by MilesNocte", event.getJDA().getUserById(Credentials.OWNER_ID).getAvatarUrl());
         embed.addField("Commander", (":crown: " + commander), false);
         embed.addField("Time", time + " " + timeZone, false);
         embed.addField("Event", rosterEvent, false);

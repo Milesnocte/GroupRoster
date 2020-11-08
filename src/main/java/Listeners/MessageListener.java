@@ -13,7 +13,7 @@ public class MessageListener extends ListenerAdapter
     {
         if(!event.getAuthor().isBot()) {
             String[] args = event.getMessage().getContentRaw().split(" ");
-            boolean owner = event.getAuthor().getId().equals(Credentials.OWNER_TOKEN);
+            boolean owner = event.getAuthor().getId().equals(Credentials.OWNER_ID);
 
             // USER COMMANDS
             if (args[0].startsWith("$")) {

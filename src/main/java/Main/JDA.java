@@ -28,6 +28,6 @@ public class JDA extends ListenerAdapter {
         // Build the bot
         jda.build().awaitReady();
 
-        System.out.println("https://discord.com/api/oauth2/authorize?client_id=702619266117009541&permissions=1544023120&scope=bot");
+        System.out.println("https://discord.com/api/oauth2/authorize?client_id=" + Credentials.BOT_ID + "&permissions=1544023120&scope=bot");
     }
 }
