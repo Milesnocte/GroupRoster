@@ -28,6 +28,7 @@ public class BuildEmbed {
         embed.addField("Event", rosterEvent, false);
         embed.addField("Roles", roleList, false);
 
+        // BUILD AND SEND THE EMBED
         event.getChannel().sendMessage(embed.build()).queue(
                 Sent -> {
                     id = Sent.getIdLong();
