@@ -12,7 +12,7 @@ public class MessageListener extends ListenerAdapter
     public void onMessageReceived(@NotNull MessageReceivedEvent event)
     {
         if(!event.getAuthor().isBot()) {
-            String[] args = event.getMessage().getContentRaw().split(" ");
+            String [] args = event.getMessage().getContentRaw().split("\\s+");
             boolean owner = event.getAuthor().getId().equals(Credentials.OWNER_ID);
 
             // USER COMMANDS
@@ -21,7 +21,7 @@ public class MessageListener extends ListenerAdapter
                 try {
                     new Commands(args, event);
                 } catch (Exception e) {
-                    System.out.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -31,7 +31,7 @@ public class MessageListener extends ListenerAdapter
                 try {
                     new OwnerCommands(args, event);
                 } catch (Exception e) {
-                    System.out.println(e);
+                    e.printStackTrace();
                 }
             }
 
