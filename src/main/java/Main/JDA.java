@@ -38,12 +38,7 @@ public class JDA extends ListenerAdapter {
         ResultSet resultSet;
 
         try{
-            resultSet = db.displayRosters();
-            String[] test = new String[]{"tanks healers, all that","2-2-4-2-0","BlackRock","2:00","EST","@MilesNocte"};
-            db.addUser(255652,test);
-            while (resultSet.next()){
-                System.out.println(resultSet.getRow() + " - " + resultSet.getString("commander"));
-            }
+            db.displayRosters();
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -19,12 +19,12 @@ public class DataBase{
     public void getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         connect = DriverManager.getConnection("jdbc:sqlite:C:\\SQLite\\GroupRoster.db");
-        System.out.println("Connecting..");
+        System.out.println("Connecting to DataBase..");
         initialise();
     }
 
     public void initialise() throws SQLException {
-        System.out.println("Initializing..");
+        System.out.println("Initializing DataBase..");
         if(!hasData){
             hasData = true;
 
@@ -35,7 +35,7 @@ public class DataBase{
                 System.out.println("Table not found. Building the Roster table.");
                 // Build the table
                 Statement statement2 = connect.createStatement();
-                statement2.execute("CREATE TABLE roster(messageId INTEGER," + "roles TEXT,"
+                statement2.execute("CREATE TABLE roster(messageId TEXT," + "roles TEXT,"
                         + "numOfRoles TEXT," + "event TEXT," + "time TEXT," + "timezone TEXT," + "commander TEXT);");
 
                 PreparedStatement prepared = connect.prepareStatement("INSERT INTO roster values(?,?,?,?,?,?,?);");
@@ -51,12 +51,12 @@ public class DataBase{
             }
         }
     }
-    public void addUser(int m_id, String[] rosterVars) throws SQLException, ClassNotFoundException {
+    public void addUser(String m_id, String[] rosterVars) throws SQLException, ClassNotFoundException {
 
         if(connect == null) getConnection();
 
         PreparedStatement prepared = connect.prepareStatement("INSERT INTO roster values(?,?,?,?,?,?,?);");
-        prepared.setInt(1,m_id);
+        prepared.setString(1,m_id);
         prepared.setString(2,rosterVars[0]);
         prepared.setString(3,rosterVars[1]);
         prepared.setString(4,rosterVars[2]);
