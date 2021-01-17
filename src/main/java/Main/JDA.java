@@ -9,12 +9,10 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import javax.security.auth.login.LoginException;
-import javax.xml.crypto.Data;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class JDA extends ListenerAdapter {
-    public static void main(String[] args) throws LoginException, InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         JDABuilder jda = JDABuilder.createDefault(Credentials.TOKEN);
 
@@ -35,13 +33,7 @@ public class JDA extends ListenerAdapter {
         System.out.println("https://discord.com/api/oauth2/authorize?client_id=" + Credentials.BOT_ID + "&permissions=1544023120&scope=bot");
 
         DataBase db = new DataBase();
-        ResultSet resultSet;
-
-        try{
-            db.displayRosters();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        db.databaseCycle();
 
     }
 }

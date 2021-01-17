@@ -1,10 +1,8 @@
 package Listeners;
 
-import Credentials.Credentials;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
-import Main.*;
 
 import java.util.Arrays;
 import java.util.List;

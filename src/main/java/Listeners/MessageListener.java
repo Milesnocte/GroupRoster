@@ -25,16 +25,6 @@ public class MessageListener extends ListenerAdapter
                 }
             }
 
-            // OWNER COMMANDS
-            if (owner && args[0].startsWith("^")) {
-                args[0] = args[0].replace("^", "");
-                try {
-                    new OwnerCommands(args, event);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
             // DEBUG LOGGING
             //if (event.isFromType(ChannelType.TEXT)) {
             //    System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),

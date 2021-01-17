@@ -10,7 +10,7 @@ public class Commands {
 
     private static BuildEmbed embed;
 
-    public Commands(String[] args, MessageReceivedEvent event) throws SQLException, ClassNotFoundException {
+    public Commands(String[] args, MessageReceivedEvent event) throws Exception {
         switch(args[0].toLowerCase()){
             case "help":
                 event.getChannel().sendMessage("`Command hasn't been implemented yet`").queue();

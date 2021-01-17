@@ -27,8 +27,10 @@ public class BotEventsListener extends ListenerAdapter {
     public void onGuildLeave(@NotNull GuildLeaveEvent event) {
         updateActivity(event);
     }
+
     public void updateActivity(Event event){
         guildCount = event.getJDA().getGuilds().size();
+        System.out.println(guildCount);
         event.getJDA().getPresence().setActivity(Activity.watching(guildCount + " Guilds, use &Help"));
     }
 }
